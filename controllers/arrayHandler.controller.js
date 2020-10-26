@@ -23,4 +23,17 @@ const modificandoArreglo = (req, res) => {
         console.log(error);
     }
 }
-module.exports = {recorriendoArreglo, modificandoArreglo}
+
+const todos = (req, res) => {
+    try {
+        const {array} = req.body
+        const buscarPositivos = (element) => {
+            return element>0;
+        }
+        const booleanoPositivos = array.every(buscarPositivos);
+        res.status(200).send({bool : booleanoPositivos});
+    } catch (error) {
+        console.log(error);
+    }
+}
+module.exports = {recorriendoArreglo, modificandoArreglo, todos}
