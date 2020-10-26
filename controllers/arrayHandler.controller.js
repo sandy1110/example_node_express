@@ -1,6 +1,5 @@
 const recorriendoArreglo = (req, res) => {
     try {
-        console.log(req);
         const {array} = req.body
 
         array.forEach((element) => {
@@ -14,13 +13,12 @@ const recorriendoArreglo = (req, res) => {
 
 const modificandoArreglo = (req, res) => {
     try {
-        console.log(req);
         const {array} = req.body
-
-        array.forEach((element) => {
-            console.log(element);
-        });
-        res.status(200).send({arreglo : array});
+        const multiplicaPorDos = (element) => {
+            return element*2;
+        }
+        const arrayPorDos = array.map(multiplicaPorDos);
+        res.status(200).send({arreglo : arrayPorDos});
     } catch (error) {
         console.log(error);
     }
